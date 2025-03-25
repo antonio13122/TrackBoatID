@@ -13,6 +13,12 @@ app.use(cors());
 app.use(express.static("uploads"));
 
 connectDB();
+app.get("/", (req, res) => {
+  res.send(" Backend is running!");
+});
+
+const boatRoutes = require("./routes/boatRoutes");
+app.use("/api/boats", boatRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
